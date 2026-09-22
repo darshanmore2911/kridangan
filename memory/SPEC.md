@@ -16,4 +16,4 @@ Static configuration only in `frontend/src/config/eventConfig.ts`: event identit
 None. This is a static marketing site with external registration links only.
 
 ## Assets
-Uploaded brand marks are wired through `eventConfig.logoPaths`: white and light KRIDANGAN variants, JamRang, the cropped NXTGen group mark, and the Halloween-season event artwork. The Vijaybhoomi mark remains a small `VU` placeholder until its official file is supplied; the first uploaded website screenshot is intentionally excluded.
+Uploaded brand marks are wired through `eventConfig.logoPaths`: transparent KRIDANGAN, JamRang, NXTGen, and Vijaybhoomi University marks plus the Halloween-season event artwork. The first uploaded website screenshot is intentionally excluded.

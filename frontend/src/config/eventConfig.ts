@@ -11,7 +11,7 @@ export const eventConfig = {
     jamrang: "https://customer-assets-v7afamib.emergentagent.net/job_kridangan-esports/artifacts/s3pv5dg9_IMG-20260920-WA0004.jpg-removebg-preview.png",
     nxtgen: "https://customer-assets-v7afamib.emergentagent.net/job_kridangan-esports/artifacts/5anh5746_Screenshot_20260921_121214.jpg-removebg-preview.png",
     eventArtwork: "https://customer-assets-v7afamib.emergentagent.net/job_kridangan-esports/artifacts/wl1lmcmq_IMG-20260910-WA0033.jpg.jpeg",
-    university: "/assets/vijaybhoomi-logo.png",
+    university: "https://customer-assets-v7afamib.emergentagent.net/job_kridangan-esports/artifacts/9n4luer3_Vijaybhoomi_University_Logo.png",
   },
   registration: {
     main: "#",
