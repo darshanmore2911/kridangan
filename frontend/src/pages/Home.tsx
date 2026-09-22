@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowDown, ArrowRight, CalendarDays, CircleDot, Clock3, Crosshair, Crown, FileText, MapPin, Moon, Sparkles, Ticket, Trophy, Users } from "lucide-react";
+import { ArrowDown, ArrowRight, CalendarDays, CircleDot, Clock3, Crosshair, Crown, FileText, MapPin, Sparkles, Ticket, Trophy, Users } from "lucide-react";
 import HalloweenAtmosphere from "@/components/HalloweenAtmosphere";
 import RegistrationModal from "@/components/RegistrationModal";
 import SiteFooter from "@/components/SiteFooter";
@@ -27,7 +27,7 @@ export default function Home() {
           <HalloweenAtmosphere variant="hero" className="-z-10" />
           <div className="mx-auto grid max-w-7xl gap-16 px-5 pb-20 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-12 lg:px-10 lg:pb-28">
             <div className="relative z-10 max-w-2xl">
-              <div data-testid="hero-eyebrow" className="mb-7 flex flex-wrap items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[#F97316]"><span className="h-px w-8 bg-[#F97316]" />{eventConfig.season} <span className="text-[#555]">/</span> {eventConfig.parentEvent} × {eventConfig.organizer}<span data-testid="hero-halloween-badge" className="inline-flex min-h-6 items-center gap-1.5 border border-[#F97316]/40 bg-[#F97316]/10 px-2.5 py-1 text-[9px] tracking-[0.18em] text-[#FDBA74]"><Moon className="size-3 animate-flicker" strokeWidth={1.75} aria-hidden="true" />Halloween edition</span></div>
+              <div data-testid="hero-eyebrow" className="mb-7 flex flex-wrap items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[#F97316]"><span className="h-px w-8 bg-[#F97316]" />{eventConfig.season} <span className="text-[#555]">/</span> {eventConfig.parentEvent} × {eventConfig.organizer}</div>
               <img data-testid="hero-kridangan-logo-image" src={eventConfig.logoPaths.kridanganOnDark} alt="KRIDANGAN logo" className="mb-6 h-14 w-40 object-cover object-left sm:h-20 sm:w-56" />
               <h1 data-testid="hero-title" className="font-heading text-[clamp(4.2rem,10vw,7.5rem)] font-black uppercase leading-[0.78] tracking-[-0.08em] text-[#F5F5F5]">KRIDANGAN<span className="text-[#F97316]">.</span></h1>
               <div className="mt-9 max-w-lg border-l border-[#F97316]/60 pl-5 sm:mt-11 sm:pl-6">
