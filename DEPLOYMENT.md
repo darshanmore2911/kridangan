@@ -5,18 +5,9 @@ This guide will help you deploy your farm-ts application (FastAPI + React) to Ve
 ## Prerequisites
 
 1. **Vercel Account**: Sign up at [vercel.com](https://vercel.com)
-2. **MongoDB Database**: Set up a MongoDB Atlas cluster or other MongoDB hosting
-3. **Git Repository**: Your code should be in a Git repository (GitHub, GitLab, etc.)
+2. **Git Repository**: Your code should be in a Git repository (GitHub, GitLab, etc.)
 
-## Step 1: Set Up MongoDB Atlas (Recommended)
-
-1. Create a free account at [MongoDB Atlas](https://www.mongodb.com/atlas)
-2. Create a new cluster
-3. Create a database user with read/write permissions
-4. Get your connection string (it should look like: `mongodb+srv://username:password@cluster.mongodb.net/`)
-5. Whitelist your IP addresses (or use `0.0.0.0/0` for all IPs)
-
-## Step 2: Deploy to Vercel
+## Step 1: Deploy to Vercel
 
 ### Option A: Deploy via Vercel Dashboard (Recommended)
 
@@ -24,7 +15,7 @@ This guide will help you deploy your farm-ts application (FastAPI + React) to Ve
 2. Click "New Project"
 3. Import your Git repository
 4. Vercel will automatically detect the configuration from `vercel.json`
-5. Set up environment variables (see Step 3)
+5. Set up environment variables (see Step 2)
 6. Click "Deploy"
 
 ### Option B: Deploy via Vercel CLI
@@ -44,25 +35,18 @@ This guide will help you deploy your farm-ts application (FastAPI + React) to Ve
    vercel --prod
    ```
 
-## Step 3: Configure Environment Variables
+## Step 2: Configure Environment Variables (Optional)
 
 In your Vercel project dashboard, go to Settings → Environment Variables and add:
-
-### Required Variables
-
-| Variable | Value | Description |
-|----------|--------|-------------|
-| `MONGO_URL` | `mongodb+srv://username:password@cluster.mongodb.net/` | Your MongoDB connection string |
-| `DB_NAME` | `app` | Your database name |
-| `CORS_ORIGINS` | `https://your-app-name.vercel.app` | Your Vercel domain (update after deployment) |
 
 ### Optional Variables
 
 | Variable | Value | Description |
 |----------|--------|-------------|
+| `CORS_ORIGINS` | `https://your-app-name.vercel.app` | Your Vercel domain (update after deployment) |
 | `LOG_LEVEL` | `INFO` | Logging level (DEBUG, INFO, WARNING, ERROR) |
 
-## Step 4: Update CORS Origins
+## Step 3: Update CORS Origins (Optional)
 
 After your first deployment:
 
@@ -70,13 +54,13 @@ After your first deployment:
 2. Update the `CORS_ORIGINS` environment variable with your actual domain
 3. Redeploy or trigger a new deployment
 
-## Step 5: Verify Deployment
+## Step 4: Verify Deployment
 
 1. **Frontend**: Visit your Vercel app URL
 2. **Backend API**: Test the API endpoints:
    - `https://your-app-name.vercel.app/api/` - Should return "Hello World"
    - `https://your-app-name.vercel.app/api/health` - Should return health status
-   - `https://your-app-name.vercel.app/api/status` - Should return empty array initially
+   - `https://your-app-name.vercel.app/api/info` - Should return app information
 
 ## Project Structure
 
