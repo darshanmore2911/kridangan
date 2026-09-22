@@ -24,6 +24,7 @@ export const eventConfig = {
     nxtgen: "https://customer-assets-v7afamib.emergentagent.net/job_kridangan-esports/artifacts/5anh5746_Screenshot_20260921_121214.jpg-removebg-preview.png",
     eventArtwork: "https://customer-assets-v7afamib.emergentagent.net/job_kridangan-esports/artifacts/wl1lmcmq_IMG-20260910-WA0033.jpg.jpeg",
     university: "https://customer-assets-v7afamib.emergentagent.net/job_kridangan-esports/artifacts/9n4luer3_Vijaybhoomi_University_Logo.png",
+    universityTransparent: "/assets/vijaybhoomi-logo-transparent.svg",
   },
   registration: {
     main: "#",
