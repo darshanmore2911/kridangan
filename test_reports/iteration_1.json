@@ -1,0 +1,32 @@
+{
+  "iteration": 1,
+  "summary": "All 3 acceptance criteria verified via browser checks. Registration modal shows exactly one top-right X close button (default Radix close button disabled via showCloseButton={false}, only custom DialogClose remains), it dismisses the modal on click, and it has an accessible name ('Close registration picker') and can receive keyboard focus.",
+  "passed": 3,
+  "failed": 0,
+  "bugs": [],
+  "action_items": [],
+  "retest_needed": false,
+  "checks": [
+    {
+      "criterion": "Registration modal displays exactly one close control",
+      "name": "registration-modal-single-close-button",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Opened modal via hero Register Now button; getByTestId('registration-modal-close-button') resolved to exactly 1 visible element (toHaveCount(1) + toBeVisible passed). Source confirms DialogContent showCloseButton={false} removes the default Radix close button, leaving only the custom DialogClose."
+    },
+    {
+      "criterion": "The remaining close control dismisses the modal",
+      "name": "registration-modal-close-dismisses",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Clicked registration-modal-close-button; modal (data-testid=registration-game-picker-modal) transitioned to not visible, assertion passed."
+    },
+    {
+      "criterion": "Close control remains accessible",
+      "name": "registration-modal-close-accessible",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "getByRole('button', { name: /close registration picker/i }) resolved and was visible (sr-only span 'Close registration picker' provides accessible name); .focus() + toBeFocused() confirmed keyboard focusability."
+    }
+  ]
+}

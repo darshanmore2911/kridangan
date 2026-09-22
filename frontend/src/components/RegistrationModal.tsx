@@ -10,7 +10,7 @@ type RegistrationModalProps = {
 export default function RegistrationModal({ open, onOpenChange }: RegistrationModalProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent data-testid="registration-game-picker-modal" className="max-w-lg border-white/10 bg-[#111111] p-0 text-[#F5F5F5] shadow-[0_0_80px_rgba(249,115,22,0.18)] sm:rounded-2xl">
+      <DialogContent showCloseButton={false} data-testid="registration-game-picker-modal" className="max-w-lg border-white/10 bg-[#111111] p-0 text-[#F5F5F5] shadow-[0_0_80px_rgba(249,115,22,0.18)] sm:rounded-2xl">
         <DialogHeader className="border-b border-white/10 p-6 pb-5 text-left sm:p-8 sm:pb-6">
           <div className="mb-5 flex items-center justify-between">
             <span data-testid="registration-modal-eyebrow" className="font-mono text-[10px] uppercase tracking-[0.24em] text-[#F97316]">Registration portal</span>
