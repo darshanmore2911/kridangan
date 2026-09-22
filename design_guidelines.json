@@ -1,0 +1,128 @@
+{
+  "project_name": "KRIDANGAN - University Esports Tournament",
+  "brand_identity": {
+    "event_name": "KRIDANGAN",
+    "parent_fest": "JAMRANG",
+    "organizer": "NxtGen Esports Club",
+    "institution": "Vijaybhoomi University, Jamrung, Karjat, Maharashtra",
+    "tone": "Premium, minimal, modern, clean, young, high-tension competitive esports with a 10-15% subtle Halloween-inspired atmospheric vibe (faint eclipse glow, orange mist/particles, abstract geometric grid; NO cartoon horror or cheap clipart)."
+  },
+  "typography": {
+    "headings": {
+      "family": "Space Grotesk, Sora, sans-serif",
+      "h1": "text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-none",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight",
+      "h3": "text-xl sm:text-2xl font-semibold tracking-normal",
+      "h4": "text-lg sm:text-xl font-medium"
+    },
+    "body": {
+      "family": "Inter, sans-serif",
+      "base": "text-base text-[#A1A1A1] leading-relaxed",
+      "small": "text-sm text-[#888888] leading-normal",
+      "tiny": "text-xs font-mono uppercase tracking-[0.2em] text-[#F97316]"
+    },
+    "mono": "Space Mono, JetBrains Mono, monospace"
+  },
+  "colors": {
+    "background_dark": "#070707",
+    "background_alt": "#0A0A0A",
+    "surface_primary": "#111111",
+    "surface_secondary": "#151515",
+    "surface_border": "rgba(255, 255, 255, 0.08)",
+    "accent_orange": "#F97316",
+    "accent_orange_hover": "#EA580C",
+    "accent_orange_glow": "rgba(249, 115, 22, 0.25)",
+    "text_primary": "#F5F5F5",
+    "text_secondary": "#A1A1A1",
+    "text_muted": "#666666",
+    "halloween_accent": "#FF6B00",
+    "halloween_moon": "#332211"
+  },
+  "visual_enhancers": {
+    "halloween_vibe": "Keep to 10-15% subtle overlay only. Use faint orange atmospheric radial gradients, subtle dark eclipse/moon glow in hero background, fine grain texture overlay, abstract wireframe grid lines, and glowing ambient particles. Do NOT add pumpkins, ghosts, skulls, or horror clipart.",
+    "borders": "1px solid rgba(255, 255, 255, 0.08) with dynamic hover transition to border-orange-500/40",
+    "shadows": "Ambient subtle drop shadow + hover box-shadow: 0 0 25px rgba(249, 115, 22, 0.2)",
+    "glassmorphism": "backdrop-blur-xl bg-[#070707]/80 border border-white/10"
+  },
+  "ctas": {
+    "hero_primary": "REGISTER NOW →",
+    "hero_secondary": "EXPLORE GAMES ↓",
+    "games_section": "CHOOSE YOUR BATTLE",
+    "prize_section": "THE STAKES ARE HIGH",
+    "bottom_banner": "READY TO ENTER THE ARENA?",
+    "tagline": "PART OF JAMRANG"
+  },
+  "image_urls": [
+    {
+      "category": "hero_background",
+      "description": "Cyber arena neon dark ambient setup",
+      "url": "https://images.unsplash.com/photo-1779493015876-bf5fe2477b34?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2MzR8MHwxfHNlYXJjaHwxfHxlc3BvcnRzJTIwZ2FtaW5nJTIwdG91cm5hbWVudCUyMG5lb24lMjBhcmVuYSUyMHBsYXllcnxlbnwwfHx8fDE3OTAwNzg2MzZ8MA&ixlib=rb-4.1.0&q=85"
+    },
+    {
+      "category": "game_chess",
+      "description": "Dark tactical chess on illuminated surface",
+      "url": "https://images.pexels.com/photos/5477776/pexels-photo-5477776.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "category": "game_esports",
+      "description": "Gamers in cyber arena with neon glow",
+      "url": "https://images.pexels.com/photos/9072388/pexels-photo-9072388.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "category": "abstract_texture",
+      "description": "Abstract geometric pattern with glowing orange and dark metallic shapes",
+      "url": "https://images.unsplash.com/photo-1779976739105-04a6a7dc71b0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NjZ8MHwxfHNlYXJjaHwyfHx0YWN0aWNhbCUyMGNoZXNzJTIwbW9iaWxlJTIwZ2FtaW5nJTIwZGFyayUyMG9yYW5nZXxlbnwwfHx8fDE3OTAwNzg2NDN8MA&ixlib=rb-4.1.0&q=85"
+    }
+  ],
+  "games_config": [
+    {
+      "id": "freefire",
+      "title": "Free Fire",
+      "genre": "Battle Royale",
+      "platform": "Mobile",
+      "status": "COMING SOON",
+      "form_url": "#"
+    },
+    {
+      "id": "chess",
+      "title": "Chess",
+      "genre": "Tactical Strategy",
+      "platform": "PC / Mobile",
+      "status": "COMING SOON",
+      "form_url": "#"
+    },
+    {
+      "id": "efootball",
+      "title": "E-Football",
+      "genre": "Sports Simulation",
+      "platform": "Console / Mobile",
+      "status": "COMING SOON",
+      "form_url": "#"
+    }
+  ],
+  "content_guidelines": {
+    "prize_pool": "Exactly ₹XX,XXX or TO BE ANNOUNCED / COMING SOON. Never invent a numeric dollar/rupee amount.",
+    "dates_fees_sponsors": "Mark as COMING SOON or TO BE ANNOUNCED. Never create fake sponsors or registration fees.",
+    "links": "All external links must use target='_blank' rel='noopener noreferrer'.",
+    "data_testids": "All interactive elements, buttons, links, modals, and nav items MUST include role-based data-testid attributes (e.g. data-testid='register-now-btn', data-testid='game-modal-trigger')."
+  },
+  "layout_structure": {
+    "header": "Sticky glassmorphism navbar with KRIDANGAN logo, nav links (Hero, Intro, Games, Prizes, Highlights, About, Contact), and REGISTER NOW CTA.",
+    "hero": "Dynamic headline, JamRang / Vijaybhoomi badge, 10-15% Halloween orange glow / eclipse vibe, primary and secondary CTA buttons.",
+    "intro": "Brief overview of KRIDANGAN under JamRang at Vijaybhoomi University by NxtGen Esports Club.",
+    "games": "Grid of 3 featured games (Free Fire, Chess, E-Football) with badges and CHOOSE YOUR BATTLE trigger opening Game Picker Modal.",
+    "prize_pool": "High-impact card displaying THE STAKES ARE HIGH with exact ₹XX,XXX representation.",
+    "highlights": "Bento grid displaying event features, competitive spirit, live streams, and arena atmosphere.",
+    "about": "Official section on JamRang and Vijaybhoomi University with external link.",
+    "registration_modal": "Game Picker modal displaying game choices with disabled COMING SOON buttons for external Google Forms.",
+    "contact_page": "Separate /contact page with Instagram and email links.",
+    "footer": "Clean dark footer with copyright, club credits, and social links."
+  },
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "Always set explicit text color on hover and interactive states.",
+    "All links opening in new tab must use rel='noopener noreferrer'.",
+    "Never use generic transparent headers without backdrop blur.",
+    "Include data-testid on every interactive button, input, card CTA, and link.",
+    "Maintain strict palette compliance (#070707, #0A0A0A, #111111, #151515, #F97316)."
+  ]
+}
