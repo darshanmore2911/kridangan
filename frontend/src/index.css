@@ -125,6 +125,85 @@
   mix-blend-mode: soft-light;
 }
 
+/* ---------- Halloween atmosphere ---------- */
+@keyframes ember-rise {
+  0%   { transform: translate3d(0, 0, 0) scale(1); opacity: 0; }
+  10%  { opacity: var(--ember-peak, 0.8); }
+  60%  { opacity: var(--ember-peak, 0.8); }
+  100% { transform: translate3d(var(--ember-drift, 20px), -110vh, 0) scale(0.4); opacity: 0; }
+}
+
+@keyframes bat-glide {
+  0%   { transform: translate3d(-10vw, 0, 0) rotate(-4deg) scaleX(1); }
+  25%  { transform: translate3d(15vw, -22px, 0) rotate(3deg) scaleX(1); }
+  50%  { transform: translate3d(42vw, 8px, 0) rotate(-2deg) scaleX(1); }
+  75%  { transform: translate3d(70vw, -18px, 0) rotate(4deg) scaleX(1); }
+  100% { transform: translate3d(110vw, 4px, 0) rotate(0deg) scaleX(1); }
+}
+
+@keyframes bat-flap {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.72); }
+}
+
+@keyframes mist-drift {
+  from { transform: translate3d(-8%, 0, 0); }
+  to   { transform: translate3d(4%, 0, 0); }
+}
+
+@keyframes moon-breathe {
+  0%, 100% { opacity: 0.75; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.55; }
+  94% { opacity: 1; }
+  97% { opacity: 0.7; }
+  98% { opacity: 1; }
+}
+
+.ember {
+  --ember-peak: 0.85;
+  box-shadow: 0 0 6px 1px rgba(249, 115, 22, 0.7), 0 0 14px 3px rgba(249, 115, 22, 0.25);
+  animation-name: ember-rise;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+.mist-layer {
+  background:
+    radial-gradient(ellipse 50% 70% at 20% 100%, rgba(249, 115, 22, 0.10), transparent 70%),
+    radial-gradient(ellipse 45% 60% at 55% 100%, rgba(255, 255, 255, 0.045), transparent 70%),
+    radial-gradient(ellipse 40% 65% at 85% 100%, rgba(249, 115, 22, 0.07), transparent 70%);
+  filter: blur(18px);
+}
+
+.animate-bat-glide {
+  animation-name: bat-glide, bat-flap;
+  animation-duration: 28s, 0.9s;
+  animation-timing-function: ease-in-out, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+  will-change: transform;
+}
+.animate-mist-drift { animation: mist-drift 22s ease-in-out infinite alternate; }
+.animate-mist-drift-slow { animation: mist-drift 34s ease-in-out infinite alternate-reverse; }
+.animate-moon-breathe { animation: moon-breathe 9s ease-in-out infinite; }
+.animate-flicker { animation: flicker 7s linear infinite; }
+
+.ghost-outline {
+  -webkit-text-stroke: 1px rgba(249, 115, 22, 0.35);
+  color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ember, .animate-bat-glide, .animate-mist-drift, .animate-mist-drift-slow, .animate-moon-breathe, .animate-flicker,
+  .animate-kridangan-float, .animate-kridangan-pulse, .animate-kridangan-drift { animation: none !important; }
+}
+
 .animate-kridangan-float { animation: kridangan-float 8s ease-in-out infinite; }
 .animate-kridangan-pulse { animation: kridangan-pulse 7s ease-in-out infinite; }
 .animate-kridangan-drift { animation: kridangan-drift 13s ease-in-out infinite alternate; }
