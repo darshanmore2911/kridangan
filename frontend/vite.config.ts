@@ -94,9 +94,16 @@ export default defineConfig(async () => {
       sourcemap: false,
       rollupOptions: {
         output: {
-          manualChunks: {
-            vendor: ['react', 'react-dom'],
-            router: ['react-router-dom'],
+          manualChunks: (id) => {
+            if (id.includes('node_modules')) {
+              if (id.includes('react') || id.includes('react-dom')) {
+                return 'vendor';
+              }
+              if (id.includes('react-router-dom')) {
+                return 'router';
+              }
+              return 'vendor';
+            }
           }
         }
       }
