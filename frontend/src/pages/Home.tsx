@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowDown, ArrowRight, CircleDot, Crosshair, Crown, MapPin, Sparkles, Trophy, Users } from "lucide-react";
+import { ArrowDown, ArrowRight, CalendarDays, CircleDot, Clock3, Crosshair, Crown, FileText, MapPin, Sparkles, Ticket, Trophy, Users } from "lucide-react";
 import RegistrationModal from "@/components/RegistrationModal";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
@@ -26,7 +26,7 @@ export default function Home() {
           <div className="pointer-events-none absolute left-[8%] top-28 -z-10 size-2 animate-kridangan-pulse rounded-full bg-[#F97316] shadow-[0_0_20px_#F97316]" />
           <div className="mx-auto grid max-w-7xl gap-16 px-5 pb-20 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-12 lg:px-10 lg:pb-28">
             <div className="relative z-10 max-w-2xl">
-              <div data-testid="hero-eyebrow" className="mb-7 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[#F97316]"><span className="h-px w-8 bg-[#F97316]" />{eventConfig.parentEvent} <span className="text-[#555]">×</span> {eventConfig.organizer}</div>
+              <div data-testid="hero-eyebrow" className="mb-7 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[#F97316]"><span className="h-px w-8 bg-[#F97316]" />{eventConfig.season} <span className="text-[#555]">/</span> {eventConfig.parentEvent} × {eventConfig.organizer}</div>
               <img data-testid="hero-kridangan-logo-image" src={eventConfig.logoPaths.kridanganOnDark} alt="KRIDANGAN logo" className="mb-6 h-14 w-40 object-cover object-left sm:h-20 sm:w-56" />
               <h1 data-testid="hero-title" className="font-heading text-[clamp(4.2rem,10vw,7.5rem)] font-black uppercase leading-[0.78] tracking-[-0.08em] text-[#F5F5F5]">KRIDANGAN<span className="text-[#F97316]">.</span></h1>
               <div className="mt-9 max-w-lg border-l border-[#F97316]/60 pl-5 sm:mt-11 sm:pl-6">
@@ -38,7 +38,7 @@ export default function Home() {
                 <a href="#games" data-testid="hero-explore-games-link" className="group inline-flex min-h-12 items-center justify-center border border-white/15 px-6 font-mono text-xs font-bold uppercase tracking-[0.12em] text-[#F5F5F5] transition-all duration-300 hover:border-[#F97316]/60 hover:bg-white/[0.03] hover:text-[#F97316] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F97316]">Explore games <ArrowDown className="ml-3 size-4 transition-transform duration-300 group-hover:translate-y-1" aria-hidden="true" /></a>
               </div>
               <div className="mt-12 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/10 pt-5 font-mono text-[10px] uppercase tracking-[0.15em] text-[#666]">
-                <span data-testid="hero-game-count"><strong className="text-[#F5F5F5]">03</strong> games</span><span data-testid="hero-event-label"><strong className="text-[#F5F5F5]">01</strong> event</span><span data-testid="hero-location-label"><strong className="text-[#F5F5F5]">VU</strong> Jamrung</span>
+                <span data-testid="hero-game-count"><strong className="text-[#F5F5F5]">03</strong> games</span><span data-testid="hero-event-label"><strong className="text-[#F5F5F5]">29–30</strong> October</span><span data-testid="hero-location-label"><strong className="text-[#F5F5F5]">VU</strong> Campus</span>
               </div>
             </div>
             <div data-testid="hero-abstract-visual" className="relative mx-auto w-full max-w-[520px] py-4 lg:ml-auto">
@@ -62,7 +62,7 @@ export default function Home() {
                     <div className="absolute size-28 rounded-full border border-[#F97316]/25" />
                     <div className="absolute size-20 rounded-full border border-dashed border-white/15" />
                     <img data-testid="hero-arena-panel-logo" src={eventConfig.logoPaths.kridanganOnDark} alt="KRIDANGAN tournament mark" className="relative z-10 h-20 w-32 object-cover" />
-                    <span className="absolute bottom-3 right-4 font-mono text-[8px] uppercase tracking-[0.16em] text-[#555]">JamRang / 2026</span>
+                    <span className="absolute bottom-3 right-4 font-mono text-[8px] uppercase tracking-[0.16em] text-[#555]">{eventConfig.season} / 2026</span>
                   </div>
                 </div>
 
@@ -94,11 +94,17 @@ export default function Home() {
         <section data-testid="event-introduction-section" className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:px-10 lg:py-32">
           <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-24">
             <div><p data-testid="event-intro-eyebrow" className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#F97316]">01 / The event</p><h2 data-testid="event-intro-title" className="mt-4 font-heading text-3xl font-bold uppercase tracking-tight sm:text-4xl">The battle<br /><span className="text-[#666]">begins.</span></h2></div>
-            <div><p data-testid="event-intro-copy" className="max-w-2xl text-lg leading-8 text-[#A1A1A1] sm:text-xl">KRIDANGAN brings competitive gaming to the JamRang experience, bringing players together across three different styles of play — fast-paced combat, tactical strategy and football simulation.</p><div className="mt-12 grid gap-0 border-y border-white/10 sm:grid-cols-3">
-              <div data-testid="event-intro-games-info" className="border-b border-white/10 py-6 sm:border-b-0 sm:border-r sm:pr-5"><p className="font-mono text-[10px] tracking-[0.2em] text-[#F97316]">01</p><p data-testid="event-intro-games-label" className="mt-5 font-heading text-lg font-semibold uppercase">3 games</p><p data-testid="event-intro-games-value" className="mt-2 text-sm leading-6 text-[#666]">Free Fire<br />Chess<br />E-Football</p></div>
-              <div data-testid="event-intro-event-info" className="border-b border-white/10 py-6 sm:border-b-0 sm:border-r sm:px-5"><p className="font-mono text-[10px] tracking-[0.2em] text-[#F97316]">02</p><p data-testid="event-intro-event-label" className="mt-5 font-heading text-lg font-semibold uppercase">Event</p><p data-testid="event-intro-event-value" className="mt-2 text-sm text-[#666]">{eventConfig.parentEvent}</p></div>
-              <div data-testid="event-intro-campus-info" className="py-6 sm:pl-5"><p className="font-mono text-[10px] tracking-[0.2em] text-[#F97316]">03</p><p data-testid="event-intro-campus-label" className="mt-5 font-heading text-lg font-semibold uppercase">Campus</p><p data-testid="event-intro-campus-value" className="mt-2 text-sm leading-6 text-[#666]">{eventConfig.university}<br />{eventConfig.venue}</p></div>
+            <div><p data-testid="event-intro-copy" className="max-w-2xl text-lg leading-8 text-[#A1A1A1] sm:text-xl">KRIDANGAN is the esports and gaming wing of {eventConfig.parentEventFull}, bringing competitive gaming, strategy and virtual football to Vijaybhoomi University for its first season.</p><div className="mt-12 grid gap-0 border-y border-white/10 sm:grid-cols-3">
+              <div data-testid="event-intro-season-info" className="border-b border-white/10 py-6 sm:border-b-0 sm:border-r sm:pr-5"><p className="font-mono text-[10px] tracking-[0.2em] text-[#F97316]">01</p><p data-testid="event-intro-season-label" className="mt-5 font-heading text-lg font-semibold uppercase">{eventConfig.season}</p><p data-testid="event-intro-season-value" className="mt-2 text-sm leading-6 text-[#666]">Esports and gaming<br />under {eventConfig.parentEventFull}</p></div>
+              <div data-testid="event-intro-date-info" className="border-b border-white/10 py-6 sm:border-b-0 sm:border-r sm:px-5"><p className="font-mono text-[10px] tracking-[0.2em] text-[#F97316]">02</p><p data-testid="event-intro-date-label" className="mt-5 font-heading text-lg font-semibold uppercase">Event dates</p><p data-testid="event-intro-date-value" className="mt-2 text-sm leading-6 text-[#666]"><time dateTime={eventConfig.eventDate.start}>29 October</time><br /><time dateTime={eventConfig.eventDate.end}>30 October 2026</time></p></div>
+              <div data-testid="event-intro-campus-info" className="py-6 sm:pl-5"><p className="font-mono text-[10px] tracking-[0.2em] text-[#F97316]">03</p><p data-testid="event-intro-campus-label" className="mt-5 font-heading text-lg font-semibold uppercase">Campus</p><p data-testid="event-intro-campus-value" className="mt-2 text-sm leading-6 text-[#666]">{eventConfig.university}<br />Jamrung, Karjat</p></div>
             </div></div>
+          </div>
+          <div data-testid="event-briefing-status-grid" className="mt-16 grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+            <div data-testid="event-briefing-date-card" className="bg-[#0A0A0A] p-5 sm:p-6"><CalendarDays className="size-4 text-[#F97316]" strokeWidth={1.5} aria-hidden="true" /><p data-testid="event-briefing-date-label" className="mt-8 font-mono text-[9px] uppercase tracking-[0.18em] text-[#666]">Event dates</p><p data-testid="event-briefing-date-value" className="mt-2 font-heading text-sm font-semibold uppercase text-[#F5F5F5]">{eventConfig.eventDate.display}</p></div>
+            <div data-testid="event-briefing-schedule-card" className="bg-[#0A0A0A] p-5 sm:p-6"><Clock3 className="size-4 text-[#F97316]" strokeWidth={1.5} aria-hidden="true" /><p data-testid="event-briefing-schedule-label" className="mt-8 font-mono text-[9px] uppercase tracking-[0.18em] text-[#666]">Detailed schedule</p><p data-testid="event-briefing-schedule-value" className="mt-2 font-heading text-sm font-semibold uppercase text-[#A1A1A1]">{eventConfig.eventDetails.schedule}</p></div>
+            <div data-testid="event-briefing-rules-card" className="bg-[#0A0A0A] p-5 sm:p-6"><FileText className="size-4 text-[#F97316]" strokeWidth={1.5} aria-hidden="true" /><p data-testid="event-briefing-rules-label" className="mt-8 font-mono text-[9px] uppercase tracking-[0.18em] text-[#666]">Rules & formats</p><p data-testid="event-briefing-rules-value" className="mt-2 font-heading text-sm font-semibold uppercase text-[#A1A1A1]">{eventConfig.eventDetails.rules}</p></div>
+            <div data-testid="event-briefing-fee-card" className="bg-[#0A0A0A] p-5 sm:p-6"><Ticket className="size-4 text-[#F97316]" strokeWidth={1.5} aria-hidden="true" /><p data-testid="event-briefing-fee-label" className="mt-8 font-mono text-[9px] uppercase tracking-[0.18em] text-[#666]">Registration fee</p><p data-testid="event-briefing-fee-value" className="mt-2 font-heading text-sm font-semibold uppercase text-[#A1A1A1]">{eventConfig.eventDetails.registrationFee}</p></div>
           </div>
         </section>
 
