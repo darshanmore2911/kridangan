@@ -88,6 +88,19 @@ export default defineConfig(async () => {
         "tailwind-merge",
       ],
     },
+    build: {
+      outDir: "dist",
+      assetsDir: "assets",
+      sourcemap: false,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vendor: ['react', 'react-dom'],
+            router: ['react-router-dom'],
+          }
+        }
+      }
+    },
     server: {
       host: true,
       port: 3000,

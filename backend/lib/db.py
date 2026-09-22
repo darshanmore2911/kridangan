@@ -8,11 +8,18 @@ from dotenv import load_dotenv
 from motor.motor_asyncio import AsyncIOMotorClient
 from pymongo import ASCENDING, DESCENDING, IndexModel
 
-load_dotenv(Path(__file__).parent.parent / ".env")
+# Load environment variables from .env file
+env_path = Path(__file__).parent.parent / ".env"
+if env_path.exists():
+    load_dotenv(env_path)
 
-mongo_url = os.environ["MONGO_URL"]
+# Get MongoDB configuration with fallbacks for production
+mongo_url = os.environ.get("MONGO_URL", "mongodb://localhost:27017")
+db_name = os.environ.get("DB_NAME", "app")
+
+# Create MongoDB client
 client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ["DB_NAME"]]
+db = client[db_name]
 
 logger = logging.getLogger(__name__)
 
@@ -23,9 +30,11 @@ INDEXES: dict[str, list[IndexModel]] = {
 
 
 async def ensure_indexes() -> None:
+    """Ensure database indexes exist, with error handling for production."""
     for collection, models in INDEXES.items():
         for model in models:  # one at a time so a bad spec skips only itself
             try:
                 await db[collection].create_indexes([model])
+                logger.info(f"Index created/verified: {collection}.{model.document.get('name', 'unnamed')}")
             except Exception as exc:  # never block boot on an index; the log line names what to fix
-                logger.error("ensure_indexes(%s.%s): %s", collection, model.document["name"], exc)
+                logger.error("ensure_indexes(%s.%s): %s", collection, model.document.get("name", "unnamed"), exc)

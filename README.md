@@ -12,17 +12,49 @@ farm-ts/
   backend/   FastAPI + motor (async MongoDB) + Pydantic v2 — python, /root/.venv
   frontend/  Vite + React 19 + Tailwind v4 + shadcn/ui (TypeScript strict)
   tests/     Playwright e2e workspace (pre-scaffolded)
+  api/       Vercel serverless function handler
 ```
 
-## Running
+## Running Locally
 
 Two separate processes, managed by supervisor in the pod (see "Pod conventions"
 below); to run them by hand from two terminals instead:
 
 ```bash
 cd backend && uvicorn server:app --host 0.0.0.0 --port 8001 --reload   # http://localhost:8001
-cd frontend && yarn dev                                                # http://localhost:3000
+cd frontend && npm run dev                                             # http://localhost:3000
 ```
+
+## Deploying to Vercel
+
+This application is configured for easy deployment to Vercel with both frontend and backend.
+
+### Quick Deploy
+
+1. **Set up MongoDB Atlas** (or other MongoDB hosting)
+2. **Push to Git** repository (GitHub, GitLab, etc.)
+3. **Import to Vercel** from your Git repository
+4. **Set environment variables** in Vercel dashboard:
+   - `MONGO_URL`: Your MongoDB connection string
+   - `DB_NAME`: Your database name (e.g., "app")
+   - `CORS_ORIGINS`: Your Vercel app domain
+5. **Deploy** automatically via Vercel
+
+### Deployment Scripts
+
+```bash
+# Deploy to preview
+./deploy.sh
+
+# Deploy to production  
+./deploy.sh --prod
+
+# Windows PowerShell
+.\deploy.ps1
+.\deploy.ps1 -Prod
+```
+
+📖 **Full deployment guide**: See [DEPLOYMENT.md](./DEPLOYMENT.md)
 
 ## The `/api` proxy convention
 
@@ -115,12 +147,12 @@ FastAPI, async throughout. `python` is the app venv interpreter
 pod:
 
 ```bash
-cd frontend && yarn typecheck
+cd frontend && npm run typecheck
 ```
 
 — plain `tsc --noEmit` run from `frontend/` checks ZERO files (root tsconfig uses
 project references with `"files": []`) and exits 0 even with type errors. Always
-use `-b` for the frontend. Lint with `cd frontend && yarn lint` (oxlint).
+use `-b` for the frontend. Lint with `cd frontend && npm run lint` (oxlint).
 
 ## Data fetching
 
@@ -132,7 +164,7 @@ fetch-in-`useEffect`.
 
 When the build is complete, run tier 1 once, all in the same turn: a curl smoke
 over the key `/api` endpoints (assert status AND a response field, plus one
-negative case), `cd frontend && yarn typecheck`, and ONE happy-path browser pass
+negative case), `cd frontend && npm run typecheck`, and ONE happy-path browser pass
 through the core user journey. Clean on all three → finish; any failure is a real
 bug — fix it, re-run the failed check, and escalate to the testing subagent.
 No routine typecheck/lint/smoke passes during the build — tier 1 runs exactly once.
