@@ -1,3 +1,5 @@
+import type { ReactElement } from "react";
+
 type Variant = "hero" | "section" | "page";
 
 type HalloweenAtmosphereProps = {
@@ -7,6 +9,7 @@ type HalloweenAtmosphereProps = {
 
 // Deterministic ember layout (no Math.random so SSR/hydration & tests stay stable).
 const embers = Array.from({ length: 18 }, (_, i) => ({
+  id: `ember-${i}`,
   left: `${(i * 53) % 100}%`,
   size: 2 + ((i * 7) % 3),
   delay: `${(i * 1.37) % 12}s`,
@@ -15,7 +18,7 @@ const embers = Array.from({ length: 18 }, (_, i) => ({
   opacity: 0.35 + ((i * 13) % 5) / 10,
 }));
 
-function Bat({ className, delay, duration, scale = 1 }: { className: string; delay: string; duration: string; scale?: number }) {
+function Bat({ className, delay, duration, scale = 1 }: { className: string; delay: string; duration: string; scale?: number }): ReactElement {
   return (
     <svg
       viewBox="0 0 64 32"
@@ -28,7 +31,7 @@ function Bat({ className, delay, duration, scale = 1 }: { className: string; del
   );
 }
 
-function Cobweb({ className }: { className: string }) {
+function Cobweb({ className }: { className: string }): ReactElement {
   return (
     <svg viewBox="0 0 200 200" aria-hidden="true" className={`pointer-events-none absolute ${className}`} fill="none" stroke="rgba(255,255,255,0.09)" strokeWidth="1">
       {[0, 15, 30, 45, 60, 75, 90].map((deg) => {
@@ -48,7 +51,7 @@ function Cobweb({ className }: { className: string }) {
   );
 }
 
-export default function HalloweenAtmosphere({ variant = "section", className = "" }: HalloweenAtmosphereProps) {
+export default function HalloweenAtmosphere({ variant = "section", className = "" }: HalloweenAtmosphereProps): ReactElement {
   const emberCount = variant === "hero" ? embers.length : variant === "page" ? 12 : 8;
   return (
     <div data-testid={`halloween-atmosphere-${variant}`} aria-hidden="true" className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}>
@@ -79,9 +82,9 @@ export default function HalloweenAtmosphere({ variant = "section", className = "
         </>
       )}
       <div className="absolute inset-0">
-        {embers.slice(0, emberCount).map((ember, i) => (
+        {embers.slice(0, emberCount).map((ember) => (
           <span
-            key={i}
+            key={ember.id}
             className="ember absolute bottom-0 rounded-full bg-[#F97316]"
             style={{
               left: ember.left,

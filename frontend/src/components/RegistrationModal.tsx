@@ -1,3 +1,4 @@
+import type { ReactElement } from "react";
 import { ArrowUpRight, X } from "lucide-react";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { eventConfig, games } from "@/config/eventConfig";
@@ -7,7 +8,7 @@ type RegistrationModalProps = {
   onOpenChange: (open: boolean) => void;
 };
 
-export default function RegistrationModal({ open, onOpenChange }: RegistrationModalProps) {
+export default function RegistrationModal({ open, onOpenChange }: RegistrationModalProps): ReactElement {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent showCloseButton={false} data-testid="registration-game-picker-modal" className="max-w-lg border-white/10 bg-[#111111] p-0 text-[#F5F5F5] shadow-[0_0_80px_rgba(249,115,22,0.18)] sm:rounded-2xl">

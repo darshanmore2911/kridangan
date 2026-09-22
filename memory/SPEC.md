@@ -21,5 +21,8 @@ None. This is a static marketing site with external registration links only.
 ## Assets
 Uploaded brand marks are wired through `eventConfig.logoPaths`: transparent KRIDANGAN, JamRang, NXTGen, and Vijaybhoomi University marks plus the Halloween-season event artwork. The first uploaded website screenshot is intentionally excluded.
 
+## Frontend structure
+`pages/Home.tsx` is a thin composer over section components in `components/home/`: `Hero`, `EventIntro`, `GamesSection`, `PrizePool`, `Highlights`, `AboutSection`, `RegistrationCTA`. Sections that trigger registration take an `onRegister` prop; the modal state lives in `Home`. All components declare explicit `ReactElement` return types.
+
 ## Halloween atmosphere
 `components/HalloweenAtmosphere.tsx` (variants `hero` / `section` / `page`) layers decorative, `aria-hidden`, pointer-events-none elements: corner cobwebs, gliding bat silhouettes, rising ember particles, and low orange mist, all driven by keyframes in `index.css` and disabled under `prefers-reduced-motion`. Used in the Home hero, games section, prize pool, and Contact page; the hero eyebrow carries a "Halloween edition" badge. Large eclipse/moon circles were removed at the user's request.

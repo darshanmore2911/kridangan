@@ -1,143 +1,33 @@
-import { useState } from "react";
-import { ArrowDown, ArrowRight, CalendarDays, CircleDot, Clock3, Crosshair, Crown, FileText, MapPin, Sparkles, Ticket, Trophy, Users } from "lucide-react";
-import HalloweenAtmosphere from "@/components/HalloweenAtmosphere";
+import { useState, type ReactElement } from "react";
+import AboutSection from "@/components/home/AboutSection";
+import EventIntro from "@/components/home/EventIntro";
+import GamesSection from "@/components/home/GamesSection";
+import Hero from "@/components/home/Hero";
+import Highlights from "@/components/home/Highlights";
+import PrizePool from "@/components/home/PrizePool";
+import RegistrationCTA from "@/components/home/RegistrationCTA";
 import RegistrationModal from "@/components/RegistrationModal";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
-import { eventConfig, games } from "@/config/eventConfig";
 
-const highlights = [
-  { icon: Crosshair, label: "Competition", copy: "Put your skills to the test.", number: "01" },
-  { icon: Users, label: "Community", copy: "Meet fellow gamers and competitors.", number: "02" },
-  { icon: Trophy, label: "Glory", copy: "Compete for the KRIDANGAN title.", number: "03" },
-  { icon: Sparkles, label: "JamRang", copy: "Be part of the larger campus celebration.", number: "04" },
-];
-
-export default function Home() {
+export default function Home(): ReactElement {
   const [registrationOpen, setRegistrationOpen] = useState(false);
+  const openRegistration = () => setRegistrationOpen(true);
 
   return (
     <div data-testid="home-page" className="min-h-screen bg-[#070707] text-[#F5F5F5]">
-      <SiteHeader onRegister={() => setRegistrationOpen(true)} />
+      <SiteHeader onRegister={openRegistration} />
       <main>
-        <section data-testid="hero-section" className="relative isolate min-h-[720px] overflow-hidden border-b border-white/10 pt-28 sm:min-h-[780px] lg:pt-32">
-          <div className="hero-grid pointer-events-none absolute inset-0 -z-20" />
-          <div className="grain-overlay pointer-events-none absolute inset-0 -z-10 opacity-30" />
-          <div className="pointer-events-none absolute -right-36 top-12 -z-10 size-[520px] rounded-full bg-[#F97316]/10 blur-[100px] sm:size-[700px]" />
-          <HalloweenAtmosphere variant="hero" className="-z-10" />
-          <div className="mx-auto grid max-w-7xl gap-16 px-5 pb-20 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-12 lg:px-10 lg:pb-28">
-            <div className="relative z-10 max-w-2xl">
-              <div data-testid="hero-eyebrow" className="mb-7 flex flex-wrap items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[#F97316]"><span className="h-px w-8 bg-[#F97316]" />{eventConfig.season} <span className="text-[#555]">/</span> {eventConfig.parentEvent} × {eventConfig.organizer}</div>
-              <img data-testid="hero-kridangan-logo-image" src={eventConfig.logoPaths.kridanganOnDark} alt="KRIDANGAN logo" className="mb-6 h-14 w-40 object-cover object-left sm:h-20 sm:w-56" />
-              <h1 data-testid="hero-title" className="font-heading text-[clamp(4.2rem,10vw,7.5rem)] font-black uppercase leading-[0.78] tracking-[-0.08em] text-[#F5F5F5]">KRIDANGAN<span className="text-[#F97316]">.</span></h1>
-              <div className="mt-9 max-w-lg border-l border-[#F97316]/60 pl-5 sm:mt-11 sm:pl-6">
-                <p data-testid="hero-headline" className="font-heading text-2xl font-semibold uppercase leading-tight tracking-tight text-[#F5F5F5] sm:text-3xl">Enter the arena<span className="text-[#F97316]">.</span></p>
-                <p data-testid="hero-description" className="mt-4 max-w-md text-sm leading-7 text-[#A1A1A1] sm:text-base">An esports showdown featuring Free Fire, Chess and E-Football, brought to you under JamRang at Vijaybhoomi University.</p>
-              </div>
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <button type="button" onClick={() => setRegistrationOpen(true)} data-testid="hero-register-button" className="group inline-flex min-h-12 items-center justify-center bg-[#F97316] px-6 font-mono text-xs font-bold uppercase tracking-[0.12em] text-[#070707] transition-all duration-300 hover:bg-[#EA580C] hover:shadow-[0_0_30px_rgba(249,115,22,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#070707]">Register now <ArrowRight className="ml-3 size-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" /></button>
-                <a href="#games" data-testid="hero-explore-games-link" className="group inline-flex min-h-12 items-center justify-center border border-white/15 px-6 font-mono text-xs font-bold uppercase tracking-[0.12em] text-[#F5F5F5] transition-all duration-300 hover:border-[#F97316]/60 hover:bg-white/[0.03] hover:text-[#F97316] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F97316]">Explore games <ArrowDown className="ml-3 size-4 transition-transform duration-300 group-hover:translate-y-1" aria-hidden="true" /></a>
-              </div>
-              <div className="mt-12 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/10 pt-5 font-mono text-[10px] uppercase tracking-[0.15em] text-[#666]">
-                <span data-testid="hero-game-count"><strong className="text-[#F5F5F5]">03</strong> games</span><span data-testid="hero-event-label"><strong className="text-[#F5F5F5]">29–30</strong> October</span><span data-testid="hero-location-label"><strong className="text-[#F5F5F5]">VU</strong> Campus</span>
-              </div>
-            </div>
-            <div data-testid="hero-abstract-visual" className="relative mx-auto w-full max-w-[520px] py-4 lg:ml-auto">
-              <div className="pointer-events-none absolute -inset-10 bg-[radial-gradient(circle_at_65%_45%,rgba(249,115,22,0.14),transparent_58%)] blur-2xl" />
-              <div data-testid="hero-arena-command-panel" className="relative overflow-hidden border border-white/10 bg-[#0B0B0B]/90 shadow-[0_32px_90px_rgba(0,0,0,0.5)] backdrop-blur-xl">
-                <div className="hero-grid pointer-events-none absolute inset-0 opacity-30" />
-                <div className="relative flex items-center justify-between border-b border-white/10 px-5 py-4 sm:px-6">
-                  <div>
-                    <p data-testid="hero-arena-panel-label" className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#F97316]">Tournament command</p>
-                    <p data-testid="hero-arena-panel-status" className="mt-1 font-mono text-[9px] uppercase tracking-[0.16em] text-[#666]">Arena selection online</p>
-                  </div>
-                  <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.15em] text-[#A1A1A1]"><span className="size-1.5 animate-kridangan-pulse rounded-full bg-[#F97316] shadow-[0_0_10px_#F97316]" /> Live</div>
-                </div>
-
-                <div className="relative grid grid-cols-[0.78fr_1.22fr] border-b border-white/10">
-                  <div className="flex min-h-36 flex-col justify-between border-r border-white/10 p-5 sm:p-6">
-                    <p data-testid="hero-arena-count-label" className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#666]">Active disciplines</p>
-                    <div><p data-testid="hero-arena-count" className="font-heading text-6xl font-bold leading-none tracking-[-0.08em] text-[#F5F5F5]">03<span className="text-[#F97316]">.</span></p><p className="mt-2 font-mono text-[9px] uppercase tracking-[0.18em] text-[#888]">One campus arena</p></div>
-                  </div>
-                  <div className="relative flex items-center justify-center overflow-hidden p-5 sm:p-6">
-                    <div className="absolute size-28 rounded-full border border-[#F97316]/25" />
-                    <div className="absolute size-20 rounded-full border border-dashed border-white/15" />
-                    <img data-testid="hero-arena-panel-logo" src={eventConfig.logoPaths.kridanganOnDark} alt="KRIDANGAN tournament mark" className="relative z-10 h-20 w-32 object-cover" />
-                    <span className="absolute bottom-3 right-4 font-mono text-[8px] uppercase tracking-[0.16em] text-[#555]">{eventConfig.season} / 2026</span>
-                  </div>
-                </div>
-
-                <div data-testid="hero-arena-game-list" className="relative divide-y divide-white/10">
-                  {[
-                    { id: "freefire", number: "01", name: "Free Fire", type: "Battle Royale", icon: Crosshair },
-                    { id: "chess", number: "02", name: "Chess", type: "Tactical Strategy", icon: Crown },
-                    { id: "efootball", number: "03", name: "E-Football", type: "Sports Simulation", icon: CircleDot },
-                  ].map(({ id, number, name, type, icon: Icon }) => (
-                    <div key={name} data-testid={`hero-arena-${id}-row`} className="group flex min-h-16 items-center gap-4 px-5 transition-colors duration-300 hover:bg-white/[0.025] sm:px-6">
-                      <span className="font-mono text-[9px] text-[#F97316]">{number}</span>
-                      <span className="flex size-8 items-center justify-center border border-white/10 bg-white/[0.02] text-[#A1A1A1] transition-colors duration-300 group-hover:border-[#F97316]/40 group-hover:text-[#F97316]"><Icon className="size-3.5" strokeWidth={1.5} aria-hidden="true" /></span>
-                      <span className="min-w-0 flex-1"><span data-testid={`hero-arena-${id}-name`} className="block font-heading text-sm font-semibold uppercase text-[#F5F5F5]">{name}</span><span className="mt-0.5 block font-mono text-[8px] uppercase tracking-[0.14em] text-[#555]">{type}</span></span>
-                      <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-[#777]">Coming soon</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="relative flex flex-col gap-3 border-t border-white/10 bg-[#F97316]/[0.04] px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-                  <p data-testid="hero-arena-organizer" className="font-mono text-[8px] uppercase tracking-[0.16em] text-[#777]">JamRang × NxtGen Esports</p>
-                  <p data-testid="hero-arena-campus" className="font-mono text-[8px] uppercase tracking-[0.16em] text-[#A1A1A1]">Vijaybhoomi University</p>
-                </div>
-              </div>
-              <div className="pointer-events-none absolute -bottom-3 -right-3 -z-10 h-full w-full border border-[#F97316]/15" />
-            </div>
-          </div>
-        </section>
-
-        <section data-testid="event-introduction-section" className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:px-10 lg:py-32">
-          <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-24">
-            <div><p data-testid="event-intro-eyebrow" className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#F97316]">01 / The event</p><h2 data-testid="event-intro-title" className="mt-4 font-heading text-3xl font-bold uppercase tracking-tight sm:text-4xl">The battle<br /><span className="text-[#666]">begins.</span></h2></div>
-            <div><p data-testid="event-intro-copy" className="max-w-2xl text-lg leading-8 text-[#A1A1A1] sm:text-xl">KRIDANGAN is the esports and gaming wing of {eventConfig.parentEventFull}, bringing competitive gaming, strategy and virtual football to Vijaybhoomi University for its first season.</p><div className="mt-12 grid gap-0 border-y border-white/10 sm:grid-cols-3">
-              <div data-testid="event-intro-season-info" className="border-b border-white/10 py-6 sm:border-b-0 sm:border-r sm:pr-5"><p className="font-mono text-[10px] tracking-[0.2em] text-[#F97316]">01</p><p data-testid="event-intro-season-label" className="mt-5 font-heading text-lg font-semibold uppercase">{eventConfig.season}</p><p data-testid="event-intro-season-value" className="mt-2 text-sm leading-6 text-[#666]">Esports and gaming<br />under {eventConfig.parentEventFull}</p></div>
-              <div data-testid="event-intro-date-info" className="border-b border-white/10 py-6 sm:border-b-0 sm:border-r sm:px-5"><p className="font-mono text-[10px] tracking-[0.2em] text-[#F97316]">02</p><p data-testid="event-intro-date-label" className="mt-5 font-heading text-lg font-semibold uppercase">Event dates</p><p data-testid="event-intro-date-value" className="mt-2 text-sm leading-6 text-[#666]"><time dateTime={eventConfig.eventDate.start}>29 October</time><br /><time dateTime={eventConfig.eventDate.end}>30 October 2026</time></p></div>
-              <div data-testid="event-intro-campus-info" className="py-6 sm:pl-5"><p className="font-mono text-[10px] tracking-[0.2em] text-[#F97316]">03</p><p data-testid="event-intro-campus-label" className="mt-5 font-heading text-lg font-semibold uppercase">Campus</p><p data-testid="event-intro-campus-value" className="mt-2 text-sm leading-6 text-[#666]">{eventConfig.university}<br />Jamrung, Karjat</p></div>
-            </div></div>
-          </div>
-          <div data-testid="event-briefing-status-grid" className="mt-16 grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
-            <div data-testid="event-briefing-date-card" className="bg-[#0A0A0A] p-5 sm:p-6"><CalendarDays className="size-4 text-[#F97316]" strokeWidth={1.5} aria-hidden="true" /><p data-testid="event-briefing-date-label" className="mt-8 font-mono text-[9px] uppercase tracking-[0.18em] text-[#666]">Event dates</p><p data-testid="event-briefing-date-value" className="mt-2 font-heading text-sm font-semibold uppercase text-[#F5F5F5]">{eventConfig.eventDate.display}</p></div>
-            <div data-testid="event-briefing-schedule-card" className="bg-[#0A0A0A] p-5 sm:p-6"><Clock3 className="size-4 text-[#F97316]" strokeWidth={1.5} aria-hidden="true" /><p data-testid="event-briefing-schedule-label" className="mt-8 font-mono text-[9px] uppercase tracking-[0.18em] text-[#666]">Detailed schedule</p><p data-testid="event-briefing-schedule-value" className="mt-2 font-heading text-sm font-semibold uppercase text-[#A1A1A1]">{eventConfig.eventDetails.schedule}</p></div>
-            <div data-testid="event-briefing-rules-card" className="bg-[#0A0A0A] p-5 sm:p-6"><FileText className="size-4 text-[#F97316]" strokeWidth={1.5} aria-hidden="true" /><p data-testid="event-briefing-rules-label" className="mt-8 font-mono text-[9px] uppercase tracking-[0.18em] text-[#666]">Rules & formats</p><p data-testid="event-briefing-rules-value" className="mt-2 font-heading text-sm font-semibold uppercase text-[#A1A1A1]">{eventConfig.eventDetails.rules}</p></div>
-            <div data-testid="event-briefing-fee-card" className="bg-[#0A0A0A] p-5 sm:p-6"><Ticket className="size-4 text-[#F97316]" strokeWidth={1.5} aria-hidden="true" /><p data-testid="event-briefing-fee-label" className="mt-8 font-mono text-[9px] uppercase tracking-[0.18em] text-[#666]">Registration fee</p><p data-testid="event-briefing-fee-value" className="mt-2 font-heading text-sm font-semibold uppercase text-[#A1A1A1]">{eventConfig.eventDetails.registrationFee}</p></div>
-          </div>
-        </section>
-
-        <section id="games" data-testid="games-section" className="relative overflow-hidden border-y border-white/10 bg-[#0A0A0A] px-5 py-24 sm:px-8 lg:px-10 lg:py-32">
-          <HalloweenAtmosphere variant="section" />
-          <div className="relative mx-auto max-w-7xl">
-            <div className="flex flex-col justify-between gap-7 sm:flex-row sm:items-end"><div><p data-testid="games-eyebrow" className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#F97316]">02 / Pick your arena</p><h2 data-testid="games-title" className="mt-4 font-heading text-3xl font-bold uppercase tracking-tight sm:text-4xl">Choose your battle<span className="text-[#F97316]">.</span></h2></div><p data-testid="games-subtitle" className="max-w-xs text-sm leading-6 text-[#666]">Three games. Three different ways to compete.</p></div>
-            <div className="mt-12 grid gap-4 lg:grid-cols-3">
-              {games.map((game) => <article key={game.id} data-testid={`game-card-${game.id}`} className="group relative min-h-[470px] overflow-hidden border border-white/10 bg-[#111111] p-6 transition-all duration-500 hover:-translate-y-1 hover:border-[#F97316]/50 hover:shadow-[0_0_35px_rgba(249,115,22,0.12)] sm:p-8">
-                <div className="pointer-events-none absolute -right-16 -top-16 size-48 rounded-full border border-[#F97316]/15 transition-transform duration-700 group-hover:scale-125" style={{ background: `radial-gradient(circle, ${game.accent}18, transparent 70%)` }} />
-                <div className="relative flex h-full flex-col"><div className="flex items-start justify-between"><span data-testid={`game-card-${game.id}-number`} className="font-mono text-xs tracking-[0.15em] text-[#F97316]">{game.number}</span><span data-testid={`game-card-${game.id}-genre`} className="border border-white/10 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.14em] text-[#666]">{game.genre}</span></div><div data-testid={`game-card-${game.id}-visual`} className="relative -mx-6 mt-6 h-44 overflow-hidden border-y border-white/10 bg-[#080808] sm:-mx-8"><img data-testid={`game-card-${game.id}-image`} src={game.imageUrl} alt={game.imageAlt} className={`h-full w-full transition-transform duration-700 group-hover:scale-[1.02] ${game.id === "efootball" ? "object-cover invert" : "object-cover"}`} /><div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-black/10" /><div className="pointer-events-none absolute inset-0 bg-[#F97316]/[0.04] mix-blend-color" /></div><div className="mt-auto pt-7"><h3 data-testid={`game-card-${game.id}-title`} className="font-heading text-2xl font-semibold uppercase tracking-tight">{game.title}</h3><p data-testid={`game-card-${game.id}-description`} className="mt-3 max-w-xs text-sm leading-6 text-[#888]">{game.description}</p><button type="button" onClick={() => setRegistrationOpen(true)} data-testid={`game-card-${game.id}-register-button`} className="group/cta mt-6 inline-flex min-h-11 items-center font-mono text-[10px] font-bold uppercase tracking-[0.13em] text-[#F97316] transition-colors hover:text-[#FDBA74] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F97316] focus-visible:ring-offset-4 focus-visible:ring-offset-[#111111]">Register for {game.title} <ArrowRight className="ml-3 size-3 transition-transform duration-300 group-hover/cta:translate-x-1" aria-hidden="true" /></button></div></div>
-              </article>)}
-            </div>
-          </div>
-        </section>
-
-        <section id="prize-pool" data-testid="prize-pool-section" className="relative overflow-hidden px-5 py-24 sm:px-8 lg:px-10 lg:py-36">
-          <div className="pointer-events-none absolute left-1/2 top-1/2 size-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F97316]/[0.06] blur-[100px]" />
-          <HalloweenAtmosphere variant="section" />
-          <div className="relative mx-auto max-w-4xl text-center"><p data-testid="prize-eyebrow" className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#F97316]">03 / The reward</p><h2 data-testid="prize-title" className="mt-4 font-heading text-3xl font-bold uppercase tracking-tight sm:text-4xl">The stakes are high<span className="text-[#F97316]">.</span></h2><p data-testid="prize-label" className="mt-12 font-mono text-xs uppercase tracking-[0.22em] text-[#666]">Total prize pool</p><p data-testid="prize-amount" className="mt-3 font-heading text-[clamp(4rem,14vw,9rem)] font-bold leading-none tracking-[-0.07em] text-[#F5F5F5] drop-shadow-[0_0_40px_rgba(249,115,22,0.35)]">{eventConfig.prizePool}</p><p data-testid="prize-note" className="mt-7 text-sm text-[#666]">Prize distribution details coming soon.</p></div>
-        </section>
-
-        <section data-testid="highlights-section" className="border-y border-white/10 bg-[#0A0A0A] px-5 py-24 sm:px-8 lg:px-10 lg:py-32"><div className="mx-auto max-w-7xl"><div className="max-w-xl"><p data-testid="highlights-eyebrow" className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#F97316]">04 / The experience</p><h2 data-testid="highlights-title" className="mt-4 font-heading text-3xl font-bold uppercase tracking-tight sm:text-4xl">More than just<br /><span className="text-[#666]">a game.</span></h2></div><div className="mt-12 grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">{highlights.map(({ icon: Icon, label, copy, number }) => <div key={label} data-testid={`highlight-card-${label.toLowerCase()}`} className="bg-[#111111] p-6 transition-colors duration-300 hover:bg-[#151515] sm:p-7"><div className="flex items-center justify-between"><Icon data-testid={`highlight-${label.toLowerCase()}-icon`} className="size-5 text-[#F97316]" strokeWidth={1.5} aria-hidden="true" /><span data-testid={`highlight-${label.toLowerCase()}-number`} className="font-mono text-[10px] text-[#555]">{number}</span></div><h3 data-testid={`highlight-${label.toLowerCase()}-title`} className="mt-12 font-heading text-lg font-semibold uppercase">{label}</h3><p data-testid={`highlight-${label.toLowerCase()}-copy`} className="mt-2 text-sm leading-6 text-[#666]">{copy}</p></div>)}</div></div></section>
-
-        <section id="about" data-testid="about-section" className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:px-10 lg:py-32"><div className="grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-24"><div><p data-testid="about-eyebrow" className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#F97316]">05 / The campus</p><h2 data-testid="about-title" className="mt-4 font-heading text-3xl font-bold uppercase tracking-tight sm:text-4xl">Part of<br /><span className="text-[#666]">JamRang.</span></h2><p data-testid="about-copy" className="mt-8 max-w-xl text-lg leading-8 text-[#A1A1A1]">KRIDANGAN is part of the JamRang event ecosystem at Vijaybhoomi University, bringing esports into the wider campus celebration.</p><a data-testid="about-university-link" href="https://vijaybhoomi.edu.in/" target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex min-h-11 items-center gap-3 border-b border-[#F97316]/60 pb-2 font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-[#F5F5F5] transition-colors hover:text-[#F97316] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F97316]">Learn more about VU <ArrowUpRightIcon /></a></div><div data-testid="about-campus-card" className="relative overflow-hidden border border-white/10 bg-[#111111] p-7 sm:p-9"><div className="absolute right-0 top-0 size-32 bg-[#F97316]/10 blur-3xl" /><div className="relative"><div data-testid="about-partner-logo-lockup" className="flex items-center gap-6"><span data-testid="about-jamrang-logo-image" className="flex h-14 w-28 items-center overflow-hidden"><img src={eventConfig.logoPaths.jamrang} alt="JamRang logo" className="h-full w-full object-contain drop-shadow-[0_4px_14px_rgba(249,115,22,0.12)]" /></span><span data-testid="about-nxtgen-logo-crop" className="flex h-14 w-16 items-center justify-center overflow-hidden"><img src={eventConfig.logoPaths.nxtgen} alt="NxtGen Esports Club logo" className="h-full w-full scale-[3.5] object-contain object-center drop-shadow-[0_4px_14px_rgba(255,255,255,0.08)]" /></span><span data-testid="about-university-logo-image" className="flex h-14 w-20 items-center justify-center overflow-hidden"><img src={eventConfig.logoPaths.universityTransparent} alt="Vijaybhoomi University logo" className="h-full w-full object-contain drop-shadow-[0_4px_14px_rgba(255,255,255,0.08)]" /></span></div><p data-testid="about-university-label" className="mt-9 font-mono text-[10px] uppercase tracking-[0.2em] text-[#F97316]">Vijaybhoomi University</p><p data-testid="about-location" className="mt-3 flex items-start gap-2 text-sm leading-6 text-[#A1A1A1]"><MapPin className="mt-1 size-4 shrink-0 text-[#F97316]" aria-hidden="true" />{eventConfig.venue}</p><p data-testid="about-logo-note" className="mt-8 border-t border-white/10 pt-4 font-mono text-[9px] uppercase tracking-[0.13em] text-[#555]">Official marks are now installed from the shared brand configuration</p></div></div></div></section>
-
-        <section data-testid="registration-cta-section" className="relative overflow-hidden border-t border-white/10 bg-[#F97316] px-5 py-20 text-[#070707] sm:px-8 lg:px-10 lg:py-28"><div className="pointer-events-none absolute right-0 top-0 size-64 translate-x-1/4 -translate-y-1/3 rounded-full border border-[#070707]/10" /><svg viewBox="0 0 64 32" aria-hidden="true" className="pointer-events-none absolute right-[28%] top-[22%] w-10 fill-[#070707]/25 sm:w-12"><path d="M32 14c-2-5-6-8-11-9 2 3 2 6 1 8-4-3-9-4-14-2 3 2 6 4 7 7-4 0-8 1-11 4 5-1 10 0 14 3l4-3 3 6 3-6 4 3c4-3 9-4 14-3-3-3-7-4-11-4 1-3 4-5 7-7-5-2-10-1-14 2-1-2-1-5 1-8-5 1-9 4-11 9Z" /></svg><svg viewBox="0 0 64 32" aria-hidden="true" className="pointer-events-none absolute right-[18%] top-[38%] w-6 fill-[#070707]/20 sm:w-8"><path d="M32 14c-2-5-6-8-11-9 2 3 2 6 1 8-4-3-9-4-14-2 3 2 6 4 7 7-4 0-8 1-11 4 5-1 10 0 14 3l4-3 3 6 3-6 4 3c4-3 9-4 14-3-3-3-7-4-11-4 1-3 4-5 7-7-5-2-10-1-14 2-1-2-1-5 1-8-5 1-9 4-11 9Z" /></svg><div className="relative mx-auto flex max-w-7xl flex-col justify-between gap-10 lg:flex-row lg:items-end"><div><p data-testid="registration-cta-eyebrow" className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[#070707]/60">06 / Your move · 29–30 October</p><h2 data-testid="registration-cta-title" className="mt-4 max-w-3xl font-heading text-4xl font-bold uppercase leading-[0.95] tracking-tight sm:text-5xl lg:text-6xl">Ready to enter<br />the arena?</h2><p data-testid="registration-cta-copy" className="mt-5 max-w-md text-sm leading-6 text-[#070707]/65">Choose your game and secure your spot in KRIDANGAN.</p></div><button type="button" onClick={() => setRegistrationOpen(true)} data-testid="bottom-register-button" className="group inline-flex min-h-14 shrink-0 items-center justify-center border border-[#070707]/30 px-7 font-mono text-xs font-bold uppercase tracking-[0.14em] transition-all duration-300 hover:bg-[#070707] hover:text-[#F5F5F5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#070707] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F97316]">Register now <ArrowRight className="ml-3 size-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" /></button></div></section>
+        <Hero onRegister={openRegistration} />
+        <EventIntro />
+        <GamesSection onRegister={openRegistration} />
+        <PrizePool />
+        <Highlights />
+        <AboutSection />
+        <RegistrationCTA onRegister={openRegistration} />
       </main>
       <SiteFooter />
       <RegistrationModal open={registrationOpen} onOpenChange={setRegistrationOpen} />
     </div>
   );
 }
-
-function ArrowUpRightIcon() { return <ArrowRight className="size-3 -rotate-45" aria-hidden="true" />; }

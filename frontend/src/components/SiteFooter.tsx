@@ -1,8 +1,9 @@
 import { ArrowUpRight, Instagram, Mail } from "lucide-react";
+import type { ReactElement } from "react";
 import { Link } from "react-router-dom";
 import { eventConfig } from "@/config/eventConfig";
 
-export default function SiteFooter() {
+export default function SiteFooter(): ReactElement {
   return (
     <footer data-testid="site-footer" className="border-t border-white/10 bg-[#070707]">
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-10 lg:py-16">

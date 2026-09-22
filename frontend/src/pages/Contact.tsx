@@ -1,6 +1,6 @@
-import { ArrowLeft, ArrowUpRight, Instagram, Mail, MapPin } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Instagram, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, type ReactElement } from "react";
 import HalloweenAtmosphere from "@/components/HalloweenAtmosphere";
 import RegistrationModal from "@/components/RegistrationModal";
 import SiteFooter from "@/components/SiteFooter";
@@ -13,7 +13,7 @@ const socials = [
   { id: "university", label: "Vijaybhoomi University", handle: "@vijaybhoomiuniversity", href: eventConfig.contact.instagram.university },
 ];
 
-export default function Contact() {
+export default function Contact(): ReactElement {
   const [registrationOpen, setRegistrationOpen] = useState(false);
   return (
     <div data-testid="contact-page" className="min-h-screen bg-[#070707] text-[#F5F5F5]">

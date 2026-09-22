@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactElement } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { eventConfig } from "@/config/eventConfig";
@@ -13,7 +13,7 @@ const navItems = [
   { label: "Contact", href: "/contact" },
 ];
 
-export default function SiteHeader({ onRegister }: SiteHeaderProps) {
+export default function SiteHeader({ onRegister }: SiteHeaderProps): ReactElement {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
@@ -23,9 +23,9 @@ export default function SiteHeader({ onRegister }: SiteHeaderProps) {
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [setScrolled]);
 
-  useEffect(() => setMobileOpen(false), [location.pathname, location.hash]);
+  useEffect(() => setMobileOpen(false), [location.pathname, location.hash, setMobileOpen]);
 
   return (
     <header data-testid="site-header" className={`fixed inset-x-0 top-0 z-40 transition-all duration-500 ${scrolled || mobileOpen ? "border-b border-white/10 bg-[#070707]/85 shadow-2xl shadow-black/20 backdrop-blur-xl" : "bg-transparent"}`}>
