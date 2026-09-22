@@ -8,6 +8,7 @@ Static configuration only in `frontend/src/config/eventConfig.ts`: event identit
 
 ## Key flows
 - `/`: visitor understands the event, the three games, prize pool, campus context, and can open the game-picker registration modal from the navbar, hero, game cards, or bottom CTA.
+- The hero’s right side is a meaningful tournament command panel showing three active disciplines, each game category, registration status, organizer, and campus instead of a purely decorative eclipse graphic.
 - The Pick Your Arena cards use the supplied Free Fire character artwork, cinematic chess image, and E-Football logo artwork, each with responsive crops and subtle card hover motion.
 - Registration modal: Free Fire, Chess, and E-Football are disabled with `COMING SOON` while configured form URLs remain `#`; real forms can be enabled by replacing the central config values.
 - `/contact`: visitor can email NxtGen Esports Club and open the three configured Instagram profiles in new tabs.
