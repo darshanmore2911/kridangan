@@ -40,6 +40,8 @@ export type Game = {
   number: string;
   formUrl: string;
   accent: string;
+  imageUrl: string;
+  imageAlt: string;
 };
 
 export const games: Game[] = [
@@ -52,6 +54,8 @@ export const games: Game[] = [
     number: "01",
     formUrl: eventConfig.registration.freeFire,
     accent: "#F97316",
+    imageUrl: "https://customer-assets-v7afamib.emergentagent.net/job_kridangan-esports/artifacts/w6b33s2x_image.png",
+    imageAlt: "Free Fire characters assembled for battle",
   },
   {
     id: "chess",
@@ -62,6 +66,8 @@ export const games: Game[] = [
     number: "02",
     formUrl: eventConfig.registration.chess,
     accent: "#FDBA74",
+    imageUrl: "https://customer-assets-v7afamib.emergentagent.net/job_kridangan-esports/artifacts/w196q6zm_image.png",
+    imageAlt: "Black and white chess pieces surrounded by cinematic mist",
   },
   {
     id: "efootball",
@@ -72,5 +78,7 @@ export const games: Game[] = [
     number: "03",
     formUrl: eventConfig.registration.eFootball,
     accent: "#FB923C",
+    imageUrl: "https://customer-assets-v7afamib.emergentagent.net/job_kridangan-esports/artifacts/zkewiya5_image.png",
+    imageAlt: "E-Football logo",
   },
 ];
