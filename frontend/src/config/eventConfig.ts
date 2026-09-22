@@ -8,8 +8,8 @@ export const eventConfig = {
   logoPaths: {
     kridanganOnDark: "https://customer-assets-v7afamib.emergentagent.net/job_kridangan-esports/artifacts/d2xzyx2u_IMG-20260910-WA0027.jpg-removebg-preview.png",
     kridanganOnLight: "https://customer-assets-v7afamib.emergentagent.net/job_kridangan-esports/artifacts/kyrknxdl_IMG-20260910-WA0026.jpg.jpeg",
-    jamrang: "https://customer-assets-v7afamib.emergentagent.net/job_kridangan-esports/artifacts/y2mt1vyd_IMG-20260920-WA0004.jpg.jpeg",
-    nxtgen: "https://customer-assets-v7afamib.emergentagent.net/job_kridangan-esports/artifacts/ufnpa627_Screenshot_20260921_121214.jpg.webp",
+    jamrang: "https://customer-assets-v7afamib.emergentagent.net/job_kridangan-esports/artifacts/s3pv5dg9_IMG-20260920-WA0004.jpg-removebg-preview.png",
+    nxtgen: "https://customer-assets-v7afamib.emergentagent.net/job_kridangan-esports/artifacts/5anh5746_Screenshot_20260921_121214.jpg-removebg-preview.png",
     eventArtwork: "https://customer-assets-v7afamib.emergentagent.net/job_kridangan-esports/artifacts/wl1lmcmq_IMG-20260910-WA0033.jpg.jpeg",
     university: "/assets/vijaybhoomi-logo.png",
   },
