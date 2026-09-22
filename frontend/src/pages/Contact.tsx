@@ -7,14 +7,21 @@ import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import { eventConfig } from "@/config/eventConfig";
 
-const socials = [
+interface SocialLink {
+  id: string;
+  label: string;
+  handle: string;
+  href: string;
+}
+
+const socials: SocialLink[] = [
   { id: "esports", label: "NxtGen Esports", handle: "@esports.vu", href: eventConfig.contact.instagram.esports },
   { id: "jamrang", label: "JamRang", handle: "@jamrang.vu", href: eventConfig.contact.instagram.jamrang },
   { id: "university", label: "Vijaybhoomi University", handle: "@vijaybhoomiuniversity", href: eventConfig.contact.instagram.university },
 ];
 
 export default function Contact(): ReactElement {
-  const [registrationOpen, setRegistrationOpen] = useState(false);
+  const [registrationOpen, setRegistrationOpen] = useState<boolean>(false);
   return (
     <div data-testid="contact-page" className="min-h-screen bg-[#070707] text-[#F5F5F5]">
       <SiteHeader onRegister={() => setRegistrationOpen(true)} />

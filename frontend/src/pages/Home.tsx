@@ -11,8 +11,8 @@ import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 
 export default function Home(): ReactElement {
-  const [registrationOpen, setRegistrationOpen] = useState(false);
-  const openRegistration = () => setRegistrationOpen(true);
+  const [registrationOpen, setRegistrationOpen] = useState<boolean>(false);
+  const openRegistration = (): void => setRegistrationOpen(true);
 
   return (
     <div data-testid="home-page" className="min-h-screen bg-[#070707] text-[#F5F5F5]">

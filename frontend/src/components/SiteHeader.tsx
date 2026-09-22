@@ -1,11 +1,16 @@
-import { useEffect, useState, type ReactElement } from "react";
+import { useCallback, useEffect, useState, type ReactElement } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { eventConfig } from "@/config/eventConfig";
 
 type SiteHeaderProps = { onRegister: () => void };
 
-const navItems = [
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+const navItems: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "Games", href: "/#games" },
   { label: "Prize pool", href: "/#prize-pool" },
@@ -14,18 +19,19 @@ const navItems = [
 ];
 
 export default function SiteHeader({ onRegister }: SiteHeaderProps): ReactElement {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState<boolean>(false);
+  const [mobileOpen, setMobileOpen] = useState<boolean>(false);
   const location = useLocation();
 
+  const handleScroll = useCallback((): void => setScrolled(window.scrollY > 20), []);
+
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [setScrolled]);
+  }, [handleScroll]);
 
-  useEffect(() => setMobileOpen(false), [location.pathname, location.hash, setMobileOpen]);
+  useEffect(() => setMobileOpen(false), [location.pathname, location.hash]);
 
   return (
     <header data-testid="site-header" className={`fixed inset-x-0 top-0 z-40 transition-all duration-500 ${scrolled || mobileOpen ? "border-b border-white/10 bg-[#070707]/85 shadow-2xl shadow-black/20 backdrop-blur-xl" : "bg-transparent"}`}>

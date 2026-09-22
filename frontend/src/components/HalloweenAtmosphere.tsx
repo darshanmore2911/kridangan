@@ -7,8 +7,27 @@ type HalloweenAtmosphereProps = {
   className?: string;
 };
 
+interface Ember {
+  id: string;
+  left: string;
+  size: number;
+  delay: string;
+  duration: string;
+  drift: string;
+  opacity: number;
+}
+
+interface BatProps {
+  className: string;
+  delay: string;
+  duration: string;
+  scale?: number;
+}
+
+const EMBER_COUNT: Record<Variant, number> = { hero: 18, page: 12, section: 8 };
+
 // Deterministic ember layout (no Math.random so SSR/hydration & tests stay stable).
-const embers = Array.from({ length: 18 }, (_, i) => ({
+const embers: Ember[] = Array.from({ length: 18 }, (_, i): Ember => ({
   id: `ember-${i}`,
   left: `${(i * 53) % 100}%`,
   size: 2 + ((i * 7) % 3),
@@ -18,7 +37,7 @@ const embers = Array.from({ length: 18 }, (_, i) => ({
   opacity: 0.35 + ((i * 13) % 5) / 10,
 }));
 
-function Bat({ className, delay, duration, scale = 1 }: { className: string; delay: string; duration: string; scale?: number }): ReactElement {
+function Bat({ className, delay, duration, scale = 1 }: BatProps): ReactElement {
   return (
     <svg
       viewBox="0 0 64 32"
@@ -52,7 +71,7 @@ function Cobweb({ className }: { className: string }): ReactElement {
 }
 
 export default function HalloweenAtmosphere({ variant = "section", className = "" }: HalloweenAtmosphereProps): ReactElement {
-  const emberCount = variant === "hero" ? embers.length : variant === "page" ? 12 : 8;
+  const emberCount: number = EMBER_COUNT[variant];
   return (
     <div data-testid={`halloween-atmosphere-${variant}`} aria-hidden="true" className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}>
       {variant === "hero" && (
