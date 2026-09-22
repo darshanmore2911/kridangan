@@ -16,4 +16,4 @@ Static configuration only in `frontend/src/config/eventConfig.ts`: event identit
 None. This is a static marketing site with external registration links only.
 
 ## Assets
-Official logos are intentionally represented by text/monogram placeholders. Drop-in paths are documented in `eventConfig.logoPaths` and point to `/public/assets/`.
+Uploaded brand marks are wired through `eventConfig.logoPaths`: white and light KRIDANGAN variants, JamRang, the cropped NXTGen group mark, and the Halloween-season event artwork. The Vijaybhoomi mark remains a small `VU` placeholder until its official file is supplied; the first uploaded website screenshot is intentionally excluded.

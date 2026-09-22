@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { ArrowDown, ArrowRight, Check, Crosshair, Gamepad2, Instagram, MapPin, Shield, Sparkles, Trophy, Users, Zap } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ArrowDown, ArrowRight, Crosshair, Gamepad2, MapPin, Sparkles, Trophy, Users } from "lucide-react";
 import RegistrationModal from "@/components/RegistrationModal";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
@@ -28,6 +27,7 @@ export default function Home() {
           <div className="mx-auto grid max-w-7xl gap-16 px-5 pb-20 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-12 lg:px-10 lg:pb-28">
             <div className="relative z-10 max-w-2xl">
               <div data-testid="hero-eyebrow" className="mb-7 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[#F97316]"><span className="h-px w-8 bg-[#F97316]" />{eventConfig.parentEvent} <span className="text-[#555]">×</span> {eventConfig.organizer}</div>
+              <img data-testid="hero-kridangan-logo-image" src={eventConfig.logoPaths.kridanganOnDark} alt="KRIDANGAN logo" className="mb-6 h-14 w-40 object-cover object-left sm:h-20 sm:w-56" />
               <h1 data-testid="hero-title" className="font-heading text-[clamp(4.2rem,14vw,9.5rem)] font-black uppercase leading-[0.78] tracking-[-0.08em] text-[#F5F5F5]">KRIDANGAN<span className="text-[#F97316]">.</span></h1>
               <div className="mt-9 max-w-lg border-l border-[#F97316]/60 pl-5 sm:mt-11 sm:pl-6">
                 <p data-testid="hero-headline" className="font-heading text-2xl font-semibold uppercase leading-tight tracking-tight text-[#F5F5F5] sm:text-3xl">Enter the arena<span className="text-[#F97316]">.</span></p>
@@ -42,6 +42,7 @@ export default function Home() {
               </div>
             </div>
             <div data-testid="hero-abstract-visual" className="relative mx-auto flex aspect-square w-full max-w-[520px] items-center justify-center lg:justify-end">
+              <img data-testid="hero-event-artwork" src={eventConfig.logoPaths.eventArtwork} alt="KRIDANGAN Halloween-season event artwork" className="pointer-events-none absolute right-[10%] top-[12%] h-[66%] w-[76%] rounded-full object-cover opacity-[0.07] mix-blend-screen blur-[0.5px]" />
               <div className="absolute right-[7%] top-[5%] size-[72%] rounded-full border border-white/10" />
               <div className="absolute right-[13%] top-[11%] size-[60%] animate-kridangan-pulse rounded-full border border-[#F97316]/30 bg-[#F97316]/5 shadow-[0_0_90px_rgba(249,115,22,0.2)]" />
               <div className="absolute right-[21%] top-[19%] size-[44%] animate-kridangan-float rounded-full bg-[radial-gradient(circle_at_35%_30%,#fdba74_0%,#f97316_16%,#7c2d12_46%,#111_70%)] shadow-[0_0_80px_rgba(249,115,22,0.28)]" />

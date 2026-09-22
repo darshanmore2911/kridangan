@@ -31,8 +31,8 @@ export default function SiteHeader({ onRegister }: SiteHeaderProps) {
     <header data-testid="site-header" className={`fixed inset-x-0 top-0 z-40 transition-all duration-500 ${scrolled || mobileOpen ? "border-b border-white/10 bg-[#070707]/85 shadow-2xl shadow-black/20 backdrop-blur-xl" : "bg-transparent"}`}>
       <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-10">
         <Link to="/" data-testid="navbar-kridangan-logo-link" className="group flex items-center gap-3" aria-label="KRIDANGAN home">
-          <span data-testid="navbar-kridangan-logo-placeholder" className="flex size-9 items-center justify-center border border-[#F97316]/50 bg-[#F97316]/10 font-heading text-xs font-bold text-[#F97316] transition-colors group-hover:border-[#F97316]">K</span>
-          <span data-testid="navbar-kridangan-wordmark" className="font-heading text-sm font-bold tracking-[0.2em] text-[#F5F5F5]">{eventConfig.eventName}</span>
+          <img data-testid="navbar-kridangan-logo-image" src={eventConfig.logoPaths.kridanganOnDark} alt="KRIDANGAN logo" className="h-10 w-[88px] object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
+          <span data-testid="navbar-kridangan-wordmark" className="sr-only">{eventConfig.eventName}</span>
         </Link>
 
         <nav data-testid="desktop-navigation" className="hidden items-center gap-7 lg:flex">
